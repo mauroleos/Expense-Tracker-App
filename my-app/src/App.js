@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
-import ExpenseTracker from "./ExpenseTracker";
+import ExpenseTracker from "./Components/ExpenseTracker";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
