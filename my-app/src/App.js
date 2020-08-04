@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ReactDom from "react-dom";
+import ExpenseTracker from "./ExpenseTracker";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 function App() {
+  useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ExpenseTracker />
+      <input type="text" /> Name
+      <input type="text" /> Amount
+      <input /> Type
+      <input /> Date
+      {<Button>Add a new expense</Button>}
+      <Container style={{ marginTop: 30 }}>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+      </Container>
+    </>
   );
 }
 
