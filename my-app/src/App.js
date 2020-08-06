@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import ExpenseTracker from "./Components/ExpenseTracker";
+import ExpenseTrackerForm from "./Components/ExpenseTracker";
 
 function App() {
   useState();
   return (
     <div>
-      <ExpenseTracker />
+      <ExpenseTrackerForm />
     </div>
   );
 }

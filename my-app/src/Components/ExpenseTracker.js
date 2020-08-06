@@ -1,32 +1,27 @@
-import React from "react";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import React, { Component } from "react";
 
-function ExpenseTracker() {
-  return (
-    <div>
-      <h3 className="navbar">Name</h3>
-      <input type="text" />
-
-      <h3>Amount</h3>
-      <input type="text" />
-
-      <h3>Type</h3>
-      <input />
-
-      <h3>Date</h3>
-      <input />
-
-      {<Button>Add a new expense</Button>}
-
-      <Container style={{ marginTop: 30 }}>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col"></div>
-        </div>
-      </Container>
-    </div>
-  );
+class ExpenseTrackerForm extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  render() {
+    return (
+      <form>
+        <label>
+          Type
+          <select>
+            <option value="Card">Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Cryptocoin">Cryptocoin</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <br />
+        <input type="text" placeholder="What did you spend it on"></input>
+      </form>
+    );
+  }
 }
 
-export default ExpenseTracker;
+export default ExpenseTrackerForm;
