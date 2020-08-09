@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ExpenseTrackerForm from "./Components/ExpenseTracker";
+// import ExpenseTrackerForm from "./Components/ExpenseTracker/Form";
 
 class ExpenseTrackerTable extends Component {
   constructor() {
