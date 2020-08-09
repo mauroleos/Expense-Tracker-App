@@ -44,10 +44,6 @@ function FormComponent(props) {
         />
         <button>Submit</button>
       </form>
-      <h1>{props.data.description}</h1>
-      <h1>{props.data.date}</h1>
-      <h1>{props.data.amount}</h1>
-      <h1>{props.data.type}</h1>
     </main>
   );
 }
