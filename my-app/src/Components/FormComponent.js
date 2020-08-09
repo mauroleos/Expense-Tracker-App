@@ -2,10 +2,9 @@ import React from "react";
 
 function FormComponent(props) {
   return (
-    <main>
-      <form>
+    <main className="table">
+      <form onSubmit={props.submitted}>
         <label>
-          Type:
           <select
             value={props.data.type}
             onChange={props.handleChange}
@@ -20,6 +19,7 @@ function FormComponent(props) {
         </label>
         <br />
         <input
+          className="col-sm-6 col-md-3"
           type="text"
           value={props.data.description}
           name="description"
@@ -28,6 +28,7 @@ function FormComponent(props) {
         />
         <br />
         <input
+          className="col-sm-6 col-md-3"
           type="text"
           value={props.data.date}
           name="date"
@@ -36,12 +37,14 @@ function FormComponent(props) {
         />
         <br />
         <input
+          className="col-sm-6 col-md-3"
           type="text"
           value={props.data.amount}
           name="amount"
           placeholder="Amount"
           onChange={props.handleChange}
         />
+        <br />
         <button>Submit</button>
       </form>
     </main>

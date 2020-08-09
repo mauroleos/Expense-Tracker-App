@@ -13,6 +13,11 @@ class Form extends Component {
     };
   }
 
+  submitted = (e) => {
+    e.preventDefault();
+    alert("it works!");
+  };
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -25,7 +30,11 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <FormComponent handleChange={this.handleChange} data={this.state} />
+        <FormComponent
+          handleChange={this.handleChange}
+          data={this.state}
+          submitted={this.submitted}
+        />
         <Table data={this.state} />
       </div>
     );
