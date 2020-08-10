@@ -6,26 +6,41 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
-      type: "",
-      description: "",
-      date: "",
-      amount: "",
+      form: {
+        type: "",
+        description: "",
+        date: "",
+        amount: "",
+      },
+      expense: {
+        type: null,
+        description: null,
+        date: null,
+        amount: null,
+      },
     };
   }
 
   submitted = (e) => {
     e.preventDefault();
-    alert("it works!");
-  };
+    const expense = {
+      type: this.state.type,
+      description: this.state.description,
+      date: this.state.date,
+      amount: this.state.amount,
+    };
+    console.log(expense);
 
+    this.setState({
+      expense: expense,
+    });
+  };
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
       [name]: value,
     });
   };
-
-  handleSubmit() {}
 
   render() {
     return (
@@ -35,7 +50,7 @@ class Form extends Component {
           data={this.state}
           submitted={this.submitted}
         />
-        <Table data={this.state} />
+        <Table data={this.state.expense} />
       </div>
     );
   }

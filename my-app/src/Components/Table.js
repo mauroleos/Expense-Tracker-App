@@ -14,10 +14,10 @@ function Table(props) {
         </thead>
         <tbody>
           <tr>
-            <td>{props.data.type}</td>
-            <td>{props.data.description}</td>
-            <td>{props.data.date}</td>
-            <td>{props.data.amount}</td>
+            {props.data ? <td>{props.data.type}</td> : null}
+            {props.data ? <td>{props.data.description}</td> : null}
+            {props.data ? <td>{props.data.date}</td> : null}
+            {props.data ? <td>{props.data.amount}</td> : null}
           </tr>
         </tbody>
       </table>
