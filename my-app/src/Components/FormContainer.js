@@ -18,7 +18,12 @@ class Form extends Component {
         date: null,
         amount: null,
       },
+      list: [],
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.submitted = this.submitted.bind(this);
+    // console.log(this.state.list);
   }
 
   submitted = (e) => {
