@@ -16,7 +16,7 @@ class Form extends Component {
       },
       expenses: [
         {
-          id: "",
+          id: null,
           type: null,
           description: null,
           date: null,
@@ -47,15 +47,9 @@ class Form extends Component {
     this.setState({
       expenses: expenseList,
     });
+    console.log(expense);
     console.log(expenseList);
-  };
-
-  incrementId = (id) => {
-    this.setState((prevState) => {
-      return {
-        id: prevState.id + 1,
-      };
-    });
+    console.log(this.state.expenses);
   };
 
   handleChange = (e) => {
