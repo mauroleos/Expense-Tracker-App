@@ -1,45 +1,63 @@
 import React, { Component } from "react";
 import FormComponent from "./FormComponent";
 import Table from "./Table";
+import Header from "./Header";
 
 class Form extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       form: {
+        id: "",
         type: "",
         description: "",
         date: "",
         amount: "",
       },
-      expense: {
-        type: null,
-        description: null,
-        date: null,
-        amount: null,
-      },
-      list: [],
+      expenses: [
+        {
+          id: "",
+          type: null,
+          description: null,
+          date: null,
+          amount: null,
+        },
+      ],
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.submitted = this.submitted.bind(this);
-    // console.log(this.state.list);
   }
 
   submitted = (e) => {
     e.preventDefault();
+
+    let expenseList = [...this.state.expenses];
+
     const expense = {
+      id: this.state.id,
       type: this.state.type,
       description: this.state.description,
       date: this.state.date,
       amount: this.state.amount,
     };
-    console.log(expense);
+
+    expenseList.push(expense);
 
     this.setState({
-      expense: expense,
+      expenses: expenseList,
+    });
+    console.log(expenseList);
+  };
+
+  incrementId = (id) => {
+    this.setState((prevState) => {
+      return {
+        id: prevState.id + 1,
+      };
     });
   };
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -50,12 +68,13 @@ class Form extends Component {
   render() {
     return (
       <div>
+        <Header />
         <FormComponent
           handleChange={this.handleChange}
-          data={this.state}
+          data={this.state.form}
           submitted={this.submitted}
         />
-        <Table data={this.state.expense} />
+        <Table data={this.state.expenses} id={this.state.id} />
       </div>
     );
   }

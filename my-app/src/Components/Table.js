@@ -6,7 +6,7 @@ function Table(props) {
       <table className="table table-bordered table-hover">
         <thead className="thead-light">
           <tr>
-            <th>Type</th>
+            <th className="list">Type</th>
             <th>Description</th>
             <th>Date</th>
             <th>Amount</th>
