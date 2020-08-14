@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import FormComponent from "./FormComponent";
 import Table from "./Table";
 import Header from "./Header";
 
@@ -14,15 +13,13 @@ class Form extends Component {
         date: "",
         amount: "",
       },
-      expenses: [
-        {
-          id: null,
-          type: null,
-          description: null,
-          date: null,
-          amount: null,
-        },
-      ],
+      expenses: {
+        id: null,
+        type: null,
+        description: null,
+        date: null,
+        amount: null,
+      },
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,8 +29,6 @@ class Form extends Component {
   submitted = (e) => {
     e.preventDefault();
 
-    let expenseList = [...this.state.expenses];
-
     const expense = {
       id: this.state.id,
       type: this.state.type,
@@ -42,14 +37,10 @@ class Form extends Component {
       amount: this.state.amount,
     };
 
-    expenseList.push(expense);
-
     this.setState({
-      expenses: expenseList,
+      expenses: expense,
     });
     console.log(expense);
-    console.log(expenseList);
-    console.log(this.state.expenses);
   };
 
   handleChange = (e) => {
@@ -63,15 +54,55 @@ class Form extends Component {
     return (
       <div>
         <Header />
-        <FormComponent
-          handleChange={this.handleChange}
-          data={this.state.form}
-          submitted={this.submitted}
-        />
-        <Table data={this.state.expenses} id={this.state.id} />
+        <main className="table">
+          <form onSubmit={this.submitted}>
+            <label>
+              <select
+                name="type"
+                value={this.state.type}
+                onChange={this.handleChange}
+              >
+                <option value="">-- Please Choose a Type --</option>
+                <option value="Card">Card</option>
+                <option value="Cash">Cash</option>
+                <option value="Cryptocoin">Cryptocoin</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <br />
+            <input
+              className="col-sm-6 col-md-3"
+              type="date"
+              name="description"
+              value={this.state.description}
+              placeholder="Description"
+              onChange={this.handleChange}
+            />
+            <br />
+            <input
+              className="col-sm-6 col-md-3"
+              type="text"
+              name="date"
+              value={this.state.date}
+              placeholder="Date"
+              onChange={this.handleChange}
+            />
+            <br />
+            <input
+              className="col-sm-6 col-md-3"
+              type="text"
+              name="amount"
+              value={this.state.amount}
+              placeholder="Amount"
+              onChange={this.handleChange}
+            />
+            <br />
+            <button>Submit</button>
+          </form>
+        </main>
+        <Table data={this.state.expenses} />
       </div>
     );
   }
 }
-
 export default Form;

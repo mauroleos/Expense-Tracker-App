@@ -24,5 +24,4 @@ function Table(props) {
     </div>
   );
 }
-
 export default Table;
