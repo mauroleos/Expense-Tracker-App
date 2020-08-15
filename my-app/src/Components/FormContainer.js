@@ -14,33 +14,33 @@ class Form extends Component {
         amount: "",
       },
       expenses: {
-        id: null,
-        type: null,
-        description: null,
-        date: null,
-        amount: null,
+        id: undefined,
+        type: undefined,
+        description: undefined,
+        date: undefined,
+        amount: undefined,
       },
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.submitted = this.submitted.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.submitted = this.submitted.bind(this);
   }
 
   submitted = (e) => {
     e.preventDefault();
 
     const expense = {
-      id: this.state.id,
-      type: this.state.type,
-      description: this.state.description,
-      date: this.state.date,
-      amount: this.state.amount,
+      id: this.state.expenses.id,
+      type: this.state.expenses.type,
+      description: this.state.expenses.description,
+      date: this.state.expenses.date,
+      amount: this.state.expenses.amount,
     };
 
     this.setState({
       expenses: expense,
     });
-    console.log(expense);
+    // console.log(expense);
   };
 
   handleChange = (e) => {
@@ -51,6 +51,7 @@ class Form extends Component {
   };
 
   render() {
+    // console.log(this.state.description);
     return (
       <div>
         <Header />
@@ -59,7 +60,7 @@ class Form extends Component {
             <label>
               <select
                 name="type"
-                value={this.state.type}
+                value={this.state.expenses.type}
                 onChange={this.handleChange}
               >
                 <option value="">-- Please Choose a Type --</option>
@@ -72,18 +73,18 @@ class Form extends Component {
             <br />
             <input
               className="col-sm-6 col-md-3"
-              type="date"
+              type="text"
               name="description"
-              value={this.state.description}
+              value={this.state.expenses.description}
               placeholder="Description"
               onChange={this.handleChange}
             />
             <br />
             <input
               className="col-sm-6 col-md-3"
-              type="text"
+              type="date"
               name="date"
-              value={this.state.date}
+              value={this.state.expenses.date}
               placeholder="Date"
               onChange={this.handleChange}
             />
@@ -92,7 +93,7 @@ class Form extends Component {
               className="col-sm-6 col-md-3"
               type="text"
               name="amount"
-              value={this.state.amount}
+              value={this.state.expenses.amount}
               placeholder="Amount"
               onChange={this.handleChange}
             />
@@ -100,7 +101,7 @@ class Form extends Component {
             <button>Submit</button>
           </form>
         </main>
-        <Table data={this.state.expenses} />
+        <Table data={this.state} />
       </div>
     );
   }

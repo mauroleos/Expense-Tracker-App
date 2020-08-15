@@ -1,6 +1,6 @@
 import React from "react";
 
-function Table(props) {
+const Table = (props) => {
   return (
     <div className="container">
       <table className="table table-bordered table-hover">
@@ -14,14 +14,14 @@ function Table(props) {
         </thead>
         <tbody>
           <tr>
-            {props.data ? <td>{props.data.type}</td> : null}
-            {props.data ? <td>{props.data.description}</td> : null}
-            {props.data ? <td>{props.data.date}</td> : null}
-            {props.data ? <td>{props.data.amount}</td> : null}
+            {props.data ? <td>{props.data.type}</td> : undefined}
+            {props.data ? <td>{props.data.description}</td> : undefined}
+            {props.data ? <td>{props.data.date}</td> : undefined}
+            {props.data ? <td>{props.data.amount}</td> : undefined}
           </tr>
         </tbody>
       </table>
     </div>
   );
-}
+};
 export default Table;
