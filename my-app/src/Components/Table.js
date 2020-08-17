@@ -1,6 +1,21 @@
 import React from "react";
 
 const Table = (props) => {
+  const expenseRows = [
+    props.expenses.map((expense) => {
+      return (
+        <tr>
+          <td>{expense.id}</td>
+          <td>{expense.type}</td>
+          <td>{expense.description}</td>
+          <td>{expense.date}</td>
+          <td>{expense.amount}</td>
+        </tr>
+      );
+    }),
+  ];
+  console.log(expenseRows);
+
   return (
     <div className="container">
       <table className="table table-bordered table-hover">
@@ -12,14 +27,7 @@ const Table = (props) => {
             <th>Amount</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            {props.data ? <td>{props.data.type}</td> : undefined}
-            {props.data ? <td>{props.data.description}</td> : undefined}
-            {props.data ? <td>{props.data.date}</td> : undefined}
-            {props.data ? <td>{props.data.amount}</td> : undefined}
-          </tr>
-        </tbody>
+        <tbody>{expenseRows}</tbody>
       </table>
     </div>
   );

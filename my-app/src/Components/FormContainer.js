@@ -13,13 +13,7 @@ class Form extends Component {
         date: "",
         amount: "",
       },
-      expenses: {
-        id: undefined,
-        type: undefined,
-        description: undefined,
-        date: undefined,
-        amount: undefined,
-      },
+      expenses: [],
     };
 
     // this.handleChange = this.handleChange.bind(this);
@@ -38,7 +32,7 @@ class Form extends Component {
     };
 
     this.setState({
-      expenses: expense,
+      expenses: [...this.state.expenses, expense],
     });
     // console.log(expense);
   };
@@ -52,15 +46,17 @@ class Form extends Component {
 
   render() {
     // console.log(this.state.description);
+
+    const expenses = [{ type: "", description: "", date: "", amount: "" }];
     return (
       <div>
         <Header />
         <main className="table">
-          <form onSubmit={this.submitted}>
+          <form onSubmit={this.props.submitted}>
             <label>
               <select
                 name="type"
-                value={this.state.expenses.type}
+                // value={this.state.expenses.type}
                 onChange={this.handleChange}
               >
                 <option value="">-- Please Choose a Type --</option>
@@ -84,14 +80,14 @@ class Form extends Component {
               className="col-sm-6 col-md-3"
               type="date"
               name="date"
-              value={this.state.expenses.date}
+              // value={this.state.expenses.date}
               placeholder="Date"
               onChange={this.handleChange}
             />
             <br />
             <input
               className="col-sm-6 col-md-3"
-              type="text"
+              type="number"
               name="amount"
               value={this.state.expenses.amount}
               placeholder="Amount"
@@ -101,7 +97,7 @@ class Form extends Component {
             <button>Submit</button>
           </form>
         </main>
-        <Table data={this.state} />
+        <Table expenses={this.state.expenses} />
       </div>
     );
   }
