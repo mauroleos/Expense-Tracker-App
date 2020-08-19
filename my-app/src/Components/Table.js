@@ -4,12 +4,12 @@ const Table = (props) => {
   const expenseRows = [
     props.expenses.map((expense) => {
       return (
-        <tr>
-          <td>{expense.id}</td>
+        <tr key={expense.id}>
           <td>{expense.type}</td>
           <td>{expense.description}</td>
           <td>{expense.date}</td>
           <td>{expense.amount}</td>
+          <td>{expense.deleteButton}</td>
         </tr>
       );
     }),
@@ -25,6 +25,7 @@ const Table = (props) => {
             <th>Description</th>
             <th>Date</th>
             <th>Amount</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{expenseRows}</tbody>
