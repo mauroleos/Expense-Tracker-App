@@ -3,23 +3,24 @@ import Table from "./Table";
 import Header from "./Header";
 
 class Form extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      form: {
-        id: "",
-        type: "",
-        description: "",
-        date: "",
-        amount: "",
-        deleteButton: "",
-      },
+      disabled: true,
+      // form: {
+      //   id: "",
+      //   type: "",
+      //   description: "",
+      //   date: "",
+      //   amount: "",
+      //   deleteButton: "",
+      // },
       expenses: [],
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.submitted = this.submitted.bind(this);
-    this.deleteButton = this.deleteButton(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.formComplete = this.formComplete.bind(this);
   }
 
   submitted = (e) => {
@@ -32,12 +33,14 @@ class Form extends Component {
       date: this.state.date,
       amount: this.state.amount,
       deleteButton: (
-        <button onClick={(id) => this.deleteButton(expense.id)}>X</button>
+        <button onClick={() => this.deleteButton(expense.id)}>X</button>
       ),
     };
+
     this.setState({
       expenses: [...this.state.expenses, expense],
     });
+    e.target.reset();
   };
 
   handleChange = (e) => {
@@ -47,8 +50,22 @@ class Form extends Component {
     });
   };
 
+  formComplete = (e) => {
+    if (e.target.value.length > 0) {
+      this.setState({
+        disabled: false,
+      });
+    } else {
+      this.setState({
+        disabled: true,
+      });
+    }
+  };
+
   deleteButton = (id) => {
-    alert("It works!");
+    this.setState({
+      expenses: [...this.state.expenses.filter((expense) => expense.id !== id)],
+    });
   };
 
   render() {
@@ -98,10 +115,12 @@ class Form extends Component {
               onChange={this.handleChange}
             />
             <br />
-            <button>Submit</button>
+            <button disabled={this.state.disabled} onChange={this.formComplete}>
+              Submit
+            </button>
           </form>
         </main>
-        <Table expenses={this.state.expenses} id={this.state.id} />
+        <Table expenses={this.state.expenses} />
       </div>
     );
   }

@@ -14,7 +14,6 @@ const Table = (props) => {
       );
     }),
   ];
-  console.log(expenseRows);
 
   return (
     <div className="container">
