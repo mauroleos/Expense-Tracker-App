@@ -6,15 +6,13 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
-      disabled: true,
-      // form: {
-      //   id: "",
-      //   type: "",
-      //   description: "",
-      //   date: "",
-      //   amount: "",
-      //   deleteButton: "",
-      // },
+      disabled: false,
+      form: {
+        type: "",
+        description: "",
+        date: "",
+        amount: "",
+      },
       expenses: [],
     };
 
@@ -33,7 +31,12 @@ class Form extends Component {
       date: this.state.date,
       amount: this.state.amount,
       deleteButton: (
-        <button onClick={() => this.deleteButton(expense.id)}>X</button>
+        <button
+          className="btn btn-danger"
+          onClick={() => this.deleteButton(expense.id)}
+        >
+          X
+        </button>
       ),
     };
 
@@ -74,50 +77,56 @@ class Form extends Component {
         <Header />
         <main className="table">
           <form onSubmit={this.submitted}>
-            <label>
-              <select
-                name="type"
-                value={this.state.expenses.type}
+            <div>
+              <label>
+                <select
+                  name="type"
+                  value={this.state.form.type}
+                  onChange={this.handleChange}
+                >
+                  <option value="">-- Please Choose a Type --</option>
+                  <option value="Card">Card</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Cryptocoin">Cryptocoin</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <br />
+              <input
+                className="col-sm-6 col-md-3"
+                type="text"
+                name="description"
+                value={this.state.form.description}
+                placeholder="Description"
                 onChange={this.handleChange}
+              />
+              <br />
+              <input
+                className="col-sm-6 col-md-3"
+                type="date"
+                name="date"
+                value={this.state.form.date}
+                placeholder="Date"
+                onChange={this.handleChange}
+              />
+              <br />
+              <input
+                className="col-sm-6 col-md-3"
+                type="number"
+                name="amount"
+                value={this.state.form.amount}
+                placeholder="Amount"
+                onChange={this.handleChange}
+              />
+              <br />
+              <button
+                className="btn btn-primary"
+                disabled={this.state.disabled}
+                onChange={this.formComplete}
               >
-                <option value="">-- Please Choose a Type --</option>
-                <option value="Card">Card</option>
-                <option value="Cash">Cash</option>
-                <option value="Cryptocoin">Cryptocoin</option>
-                <option value="Other">Other</option>
-              </select>
-            </label>
-            <br />
-            <input
-              className="col-sm-6 col-md-3"
-              type="text"
-              name="description"
-              value={this.state.expenses.description}
-              placeholder="Description"
-              onChange={this.handleChange}
-            />
-            <br />
-            <input
-              className="col-sm-6 col-md-3"
-              type="date"
-              name="date"
-              value={this.state.expenses.date}
-              placeholder="Date"
-              onChange={this.handleChange}
-            />
-            <br />
-            <input
-              className="col-sm-6 col-md-3"
-              type="number"
-              name="amount"
-              value={this.state.expenses.amount}
-              placeholder="Amount"
-              onChange={this.handleChange}
-            />
-            <br />
-            <button disabled={this.state.disabled} onChange={this.formComplete}>
-              Submit
-            </button>
+                Submit
+              </button>
+            </div>
           </form>
         </main>
         <Table expenses={this.state.expenses} />
