@@ -6,7 +6,7 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
-      disabled: false,
+      disabled: true,
       form: {
         type: "",
         description: "",
@@ -18,7 +18,47 @@ class Form extends Component {
 
     this.submitted = this.submitted.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.formComplete = this.formComplete.bind(this);
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   const formIsInvalid = [
+  //     this.state.form.type === "",
+  //     this.state.form.description === "",
+  //     this.state.form.date === "",
+  //     this.state.form.amount === "",
+  //   ];
+  //   console.log(formIsInvalid);
+
+  //   if (prevState.disabled !== formIsInvalid) {
+  //     this.setState({
+  //       disabled: formIsInvalid === true,
+  //     });
+  //   }
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    const typeIsInvalid = this.state.form.type === "";
+    const descriptionIsInvalid = this.state.form.description === "";
+    const dateIsInvalid = this.state.form.date === "";
+    const amountIsInvalid = this.state.form.amount === "";
+
+    console.log(amountIsInvalid);
+
+    if (
+      prevState.disabled !== typeIsInvalid &&
+      prevState.disabled !== descriptionIsInvalid &&
+      prevState.disabled !== dateIsInvalid &&
+      prevState.disabled !== amountIsInvalid
+    ) {
+      this.setState({
+        disabled: [
+          typeIsInvalid === true,
+          descriptionIsInvalid === true,
+          dateIsInvalid === true,
+          amountIsInvalid === true,
+        ],
+      });
+    }
   }
 
   submitted = (e) => {
@@ -48,21 +88,13 @@ class Form extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
-  };
 
-  formComplete = (e) => {
-    if (e.target.value.length > 0) {
-      this.setState({
-        disabled: false,
-      });
-    } else {
-      this.setState({
-        disabled: true,
-      });
-    }
+    const copyForm = Object.assign({}, this.state.form);
+    copyForm[name] = value;
+
+    this.setState({
+      form: copyForm,
+    });
   };
 
   deleteButton = (id) => {
@@ -81,7 +113,7 @@ class Form extends Component {
               <label>
                 <select
                   name="type"
-                  value={this.state.form.type}
+                  value={this.state.expenses.type}
                   onChange={this.handleChange}
                 >
                   <option value="">-- Please Choose a Type --</option>
@@ -96,7 +128,7 @@ class Form extends Component {
                 className="col-sm-6 col-md-3"
                 type="text"
                 name="description"
-                value={this.state.form.description}
+                value={this.state.expenses.description}
                 placeholder="Description"
                 onChange={this.handleChange}
               />
@@ -105,7 +137,7 @@ class Form extends Component {
                 className="col-sm-6 col-md-3"
                 type="date"
                 name="date"
-                value={this.state.form.date}
+                value={this.state.expenses.date}
                 placeholder="Date"
                 onChange={this.handleChange}
               />
@@ -114,7 +146,7 @@ class Form extends Component {
                 className="col-sm-6 col-md-3"
                 type="number"
                 name="amount"
-                value={this.state.form.amount}
+                value={this.state.expenses.amount}
                 placeholder="Amount"
                 onChange={this.handleChange}
               />

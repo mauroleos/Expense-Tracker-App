@@ -16,6 +16,7 @@ const Table = (props) => {
   ];
 
   return (
+    // console.log(expenseRows),
     <div className="container">
       <table className="table table-bordered table-hover">
         <thead className="thead-light">
