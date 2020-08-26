@@ -6,7 +6,6 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
-      disabled: true,
       form: {
         type: "",
         description: "",
@@ -15,75 +14,62 @@ class Form extends Component {
       },
       expenses: [],
     };
+    console.log(this.state.expenses);
 
     this.submitted = this.submitted.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const formIsInvalid = [
-  //     this.state.form.type === "",
-  //     this.state.form.description === "",
-  //     this.state.form.date === "",
-  //     this.state.form.amount === "",
-  //   ];
-  //   console.log(formIsInvalid);
-
-  //   if (prevState.disabled !== formIsInvalid) {
-  //     this.setState({
-  //       disabled: formIsInvalid === true,
-  //     });
-  //   }
-  // }
-
-  componentDidUpdate(prevProps, prevState) {
-    const typeIsInvalid = this.state.form.type === "";
-    const descriptionIsInvalid = this.state.form.description === "";
-    const dateIsInvalid = this.state.form.date === "";
-    const amountIsInvalid = this.state.form.amount === "";
-
-    console.log(amountIsInvalid);
-
+  validateForm() {
     if (
-      prevState.disabled !== typeIsInvalid &&
-      prevState.disabled !== descriptionIsInvalid &&
-      prevState.disabled !== dateIsInvalid &&
-      prevState.disabled !== amountIsInvalid
+      this.state.form.type.length > 0 &&
+      this.state.form.description.length > 0 &&
+      this.state.form.date.length > 0 &&
+      this.state.form.amount.length > 0
     ) {
-      this.setState({
-        disabled: [
-          typeIsInvalid === true,
-          descriptionIsInvalid === true,
-          dateIsInvalid === true,
-          amountIsInvalid === true,
-        ],
-      });
+      // console.log(this.state.form.description.length);
+      return true;
+    } else {
+      alert("Form must be filled out completely");
+      return false;
     }
   }
 
+  // clearForm() {
+  //   this.setState({
+  //     form: {
+  //       type: "",
+  //       description: "",
+  //       date: "",
+  //       amount: "",
+  //     },
+  //   });
+  // }
+
   submitted = (e) => {
     e.preventDefault();
+    if (this.validateForm() === true) {
+      const expense = {
+        id: Math.random(),
+        type: this.state.type,
+        description: this.state.description,
+        date: this.state.date,
+        amount: this.state.amount,
+        deleteButton: (
+          <button
+            className="btn btn-danger"
+            onClick={() => this.deleteButton(expense.id)}
+          >
+            X
+          </button>
+        ),
+      };
 
-    const expense = {
-      id: Math.random(),
-      type: this.state.type,
-      description: this.state.description,
-      date: this.state.date,
-      amount: this.state.amount,
-      deleteButton: (
-        <button
-          className="btn btn-danger"
-          onClick={() => this.deleteButton(expense.id)}
-        >
-          X
-        </button>
-      ),
-    };
-
-    this.setState({
-      expenses: [...this.state.expenses, expense],
-    });
-    e.target.reset();
+      this.setState({
+        expenses: [...this.state.expenses, expense],
+      });
+      e.target.reset();
+    }
   };
 
   handleChange = (e) => {
@@ -153,8 +139,8 @@ class Form extends Component {
               <br />
               <button
                 className="btn btn-primary"
-                disabled={this.state.disabled}
                 onChange={this.formComplete}
+                onClick={this.clearForm}
               >
                 Submit
               </button>
