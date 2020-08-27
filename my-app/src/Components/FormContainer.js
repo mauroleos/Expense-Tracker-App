@@ -35,17 +35,6 @@ class Form extends Component {
     }
   }
 
-  // clearForm() {
-  //   this.setState({
-  //     form: {
-  //       type: "",
-  //       description: "",
-  //       date: "",
-  //       amount: "",
-  //     },
-  //   });
-  // }
-
   submitted = (e) => {
     e.preventDefault();
     if (this.validateForm() === true) {
@@ -67,6 +56,12 @@ class Form extends Component {
 
       this.setState({
         expenses: [...this.state.expenses, expense],
+        form: {
+          type: "",
+          description: "",
+          date: "",
+          amount: "",
+        },
       });
       e.target.reset();
     }
@@ -137,11 +132,7 @@ class Form extends Component {
                 onChange={this.handleChange}
               />
               <br />
-              <button
-                className="btn btn-primary"
-                onChange={this.formComplete}
-                onClick={this.clearForm}
-              >
+              <button onChange={this.submitted} className="btn btn-primary">
                 Submit
               </button>
             </div>
