@@ -40,16 +40,16 @@ class Form extends Component {
     if (this.validateForm() === true) {
       const expense = {
         id: Math.random(),
-        type: this.state.type,
-        description: this.state.description,
-        date: this.state.date,
-        amount: this.state.amount,
+        type: this.state.form.type,
+        description: this.state.form.description,
+        date: this.state.form.date,
+        amount: this.state.form.amount,
         deleteButton: (
           <button
             className="btn btn-danger"
             onClick={() => this.deleteButton(expense.id)}
           >
-            X
+            &times;
           </button>
         ),
       };
@@ -91,50 +91,78 @@ class Form extends Component {
         <main className="table">
           <form onSubmit={this.submitted}>
             <div>
-              <label>
-                <select
-                  name="type"
-                  value={this.state.expenses.type}
-                  onChange={this.handleChange}
-                >
-                  <option value="">-- Please Choose a Type --</option>
-                  <option value="Card">Card</option>
-                  <option value="Cash">Cash</option>
-                  <option value="Cryptocoin">Cryptocoin</option>
-                  <option value="Other">Other</option>
-                </select>
-              </label>
+              <div style={{ marginTop: "30px" }}>
+                <div className="row">
+                  <label>
+                    <select
+                      className="col-sm-6 offset-sm-3"
+                      style={{
+                        textAlign: "center",
+                      }}
+                      name="type"
+                      value={this.state.expenses.type}
+                      onChange={this.handleChange}
+                    >
+                      <option value="">-- Please Choose a Type --</option>
+                      <option value="Card">Card</option>
+                      <option value="Cash">Cash</option>
+                      <option value="Cryptocoin">Cryptocoin</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
               <br />
-              <input
-                className="col-sm-6 col-md-3"
-                type="text"
-                name="description"
-                value={this.state.expenses.description}
-                placeholder="Description"
-                onChange={this.handleChange}
-              />
+              <div style={{ marginTop: "30px" }}>
+                <div className="row">
+                  <input
+                    className="col-sm-6 offset-sm-3"
+                    type="text"
+                    name="description"
+                    value={this.state.form.description}
+                    placeholder="Description"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
               <br />
-              <input
-                className="col-sm-6 col-md-3"
-                type="date"
-                name="date"
-                value={this.state.expenses.date}
-                placeholder="Date"
-                onChange={this.handleChange}
-              />
+              <div style={{ marginTop: "30px" }}>
+                <div className="row">
+                  <input
+                    className="col-sm-6 offset-sm-3"
+                    type="date"
+                    name="date"
+                    value={this.state.form.date}
+                    placeholder="Date"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
               <br />
-              <input
-                className="col-sm-6 col-md-3"
-                type="number"
-                name="amount"
-                value={this.state.expenses.amount}
-                placeholder="Amount"
-                onChange={this.handleChange}
-              />
+              <div style={{ marginTop: "30px" }}>
+                <div className="row">
+                  <input
+                    className="col-sm-6 offset-sm-3"
+                    type="number"
+                    name="amount"
+                    value={this.state.form.amount}
+                    placeholder="Amount"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
               <br />
-              <button onChange={this.submitted} className="btn btn-primary">
-                Submit
-              </button>
+              <div style={{ textAlign: "center" }}>
+                <div className="row">
+                  <button
+                    onChange={this.submitted}
+                    className="btn btn-primary"
+                    // style={{ textAlign: "center" }}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
             </div>
           </form>
         </main>
