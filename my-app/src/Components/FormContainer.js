@@ -95,7 +95,7 @@ class Form extends Component {
                 <div className="row">
                   <label>
                     <select
-                      className="col-sm-6 offset-sm-3"
+                      className="col-sm-12"
                       style={{
                         textAlign: "center",
                       }}
@@ -116,7 +116,7 @@ class Form extends Component {
               <div style={{ marginTop: "30px" }}>
                 <div className="row">
                   <input
-                    className="col-sm-6 offset-sm-3"
+                    className="col-sm-6"
                     type="text"
                     name="description"
                     value={this.state.form.description}
@@ -129,7 +129,7 @@ class Form extends Component {
               <div style={{ marginTop: "30px" }}>
                 <div className="row">
                   <input
-                    className="col-sm-6 offset-sm-3"
+                    className="col-sm-6"
                     type="date"
                     name="date"
                     value={this.state.form.date}
@@ -142,7 +142,7 @@ class Form extends Component {
               <div style={{ marginTop: "30px" }}>
                 <div className="row">
                   <input
-                    className="col-sm-6 offset-sm-3"
+                    className="col-sm-6"
                     type="number"
                     name="amount"
                     value={this.state.form.amount}
