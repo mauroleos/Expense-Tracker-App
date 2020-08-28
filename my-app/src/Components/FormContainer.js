@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Table from "./Table";
 import Header from "./Header";
+// import "bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 class Form extends Component {
   constructor() {
