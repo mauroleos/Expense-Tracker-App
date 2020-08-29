@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Table from "./Table";
 import Header from "./Header";
-// import "bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 class Form extends Component {
   constructor() {
@@ -16,8 +14,6 @@ class Form extends Component {
       },
       expenses: [],
     };
-    console.log(this.state.expenses);
-
     this.submitted = this.submitted.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -29,7 +25,6 @@ class Form extends Component {
       this.state.form.date.length > 0 &&
       this.state.form.amount.length > 0
     ) {
-      // console.log(this.state.form.description.length);
       return true;
     } else {
       alert("Form must be filled out completely");
@@ -93,14 +88,13 @@ class Form extends Component {
         <main className="table">
           <form onSubmit={this.submitted}>
             <div>
-              <div style={{ marginTop: "30px" }}>
+              <div>
                 <div className="row">
                   <label>
                     <select
-                      className="col-sm-12"
-                      style={{
-                        textAlign: "center",
-                      }}
+                      style={{ marginTop: "10px" }}
+                      className="col-sm"
+                      style={{ textAlign: "center" }}
                       name="type"
                       value={this.state.expenses.type}
                       onChange={this.handleChange}
@@ -115,10 +109,11 @@ class Form extends Component {
                 </div>
               </div>
               <br />
-              <div style={{ marginTop: "30px" }}>
+              <div style={{ padding: "40px" }}>
                 <div className="row">
                   <input
-                    className="col-sm-6"
+                    style={{ textAlign: "center" }}
+                    className="col-sm"
                     type="text"
                     name="description"
                     value={this.state.form.description}
@@ -128,10 +123,11 @@ class Form extends Component {
                 </div>
               </div>
               <br />
-              <div style={{ marginTop: "30px" }}>
+              <div style={{ padding: "40px" }}>
                 <div className="row">
                   <input
-                    className="col-sm-6"
+                    style={{ textAlign: "center" }}
+                    className="col-sm"
                     type="date"
                     name="date"
                     value={this.state.form.date}
@@ -141,10 +137,11 @@ class Form extends Component {
                 </div>
               </div>
               <br />
-              <div style={{ marginTop: "30px" }}>
+              <div style={{ padding: "40px" }}>
                 <div className="row">
                   <input
-                    className="col-sm-6"
+                    style={{ textAlign: "center" }}
+                    className="col-sm"
                     type="number"
                     name="amount"
                     value={this.state.form.amount}
@@ -156,11 +153,7 @@ class Form extends Component {
               <br />
               <div style={{ textAlign: "center" }}>
                 <div className="row">
-                  <button
-                    onChange={this.submitted}
-                    className="btn btn-primary"
-                    // style={{ textAlign: "center" }}
-                  >
+                  <button onChange={this.submitted} className="btn btn-primary">
                     Submit
                   </button>
                 </div>

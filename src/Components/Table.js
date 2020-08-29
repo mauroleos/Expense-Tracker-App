@@ -1,6 +1,4 @@
 import React from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap";
 
 const Table = (props) => {
   const expenseRows = [
@@ -18,7 +16,6 @@ const Table = (props) => {
   ];
 
   return (
-    // console.log(expenseRows),
     <div className="container">
       <table className="table table-bordered table-hover">
         <thead className="thead-light">
