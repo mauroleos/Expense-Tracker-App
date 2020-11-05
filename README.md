@@ -13,6 +13,5 @@ This is an Expense Tracker app written with REACT/Node.js and Bootstrap/Reactstr
   REACT allowed me to write HTML and manage how I wanted it to interact with my state. This app is built with class-based components, different states, and uses props to pass down data to child components. I enjoyed using NPM and seeing changes to my code in real time. Bootstrap made it easy and enjoyable to style my different components. I look forward to learning more about it's responsive framework. REACT has opened my eyes to a new way of coding and I am eager to explore more life-cycle methods and functional components with hooks.
  
 # Author
-<strong>Mauro Leos</strong>-<i>Full-Stack Software Developer</i>-<a href="https://www.linkedin.com/in/mauro-leos-b4103a11b/">LinkedIn</a><a href="https:/https://www.mauroleos.com//">Website</a>
+<strong>Mauro Leos</strong>-<i>Full-Stack Software Developer</i>-<a href="https://www.linkedin.com/in/mauro-leos-b4103a11b/">LinkedIn </a><a href="https:/https://www.mauroleos.com//">Website</a>
 
-https://www.mauroleos.com/
