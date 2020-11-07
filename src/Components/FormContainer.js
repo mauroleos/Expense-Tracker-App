@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Table from "./Table";
 import Header from "./Header";
+import InputField from "./InputField";
 
 class Form extends Component {
   constructor() {
@@ -89,7 +90,7 @@ class Form extends Component {
           <form onSubmit={this.submitted}>
             <div>
               <div>
-                <div className="row">
+                <div className="row my-1">
                   <label>
                     <select
                       style={{ marginTop: "10px" }}
@@ -108,51 +109,23 @@ class Form extends Component {
                   </label>
                 </div>
               </div>
-              <br />
-              <div style={{ padding: "40px" }}>
-                <div className="row">
-                  <input
-                    style={{ textAlign: "center" }}
-                    className="col-sm"
-                    type="text"
-                    name="description"
-                    value={this.state.form.description}
-                    placeholder="Description"
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <br />
-              <div style={{ padding: "40px" }}>
-                <div className="row">
-                  <input
-                    style={{ textAlign: "center" }}
-                    className="col-sm"
-                    type="date"
-                    name="date"
-                    value={this.state.form.date}
-                    placeholder="Date"
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <br />
-              <div style={{ padding: "40px" }}>
-                <div className="row">
-                  <input
-                    style={{ textAlign: "center" }}
-                    className="col-sm"
-                    type="number"
-                    name="amount"
-                    value={this.state.form.amount}
-                    placeholder="Amount"
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-              <br />
-              <div style={{ textAlign: "center" }}>
-                <div className="row">
+                <InputField 
+                  description={"description"} 
+                  handleChange={this.handleChange} 
+                  stateValue={this.state.form.description} 
+                  inputType={"text"}/>
+                <InputField 
+                  description={"date"} 
+                  handleChange={this.handleChange} 
+                  stateValue={this.state.form.date} 
+                  inputType={"date"}/>
+                <InputField 
+                  description={"amount"} 
+                  handleChange={this.handleChange} 
+                  stateValue={this.state.form.amount} 
+                  inputType={"number"}/>
+              <div style={{ textAlign: "center" }}>              
+              <div className="row">
                   <button onChange={this.submitted} className="btn btn-primary">
                     Submit
                   </button>
